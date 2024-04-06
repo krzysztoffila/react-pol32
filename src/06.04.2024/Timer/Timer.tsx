@@ -30,6 +30,7 @@ class Timer extends Component<{}, TimerState> {
     this.setState(() => ({
       isRunning: true
     }))
+
   }
   stopTimer = () => {
     clearInterval(this.timerId)
@@ -45,12 +46,14 @@ class Timer extends Component<{}, TimerState> {
     }))
   }
   componentDidMount(): void {
+    // this.startTimer()
   }
   componentDidUpdate(prevProps: Readonly<{}>, prevState: Readonly<TimerState>, snapshot?: any): void {
 
   }
   componentWillUnmount(): void {
-
+    this.stopTimer();
+    this.resetTimer();
   }
   render() {
     return (

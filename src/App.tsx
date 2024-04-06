@@ -53,7 +53,7 @@ class App extends Component<{}, AppState> {
           {this.state.isCounterVisible ? "Ukryj" : "Pokaż"} Counter komponent
         </button>
         {this.state.isCounterVisible && <Counter />} */}
-        <Timer />
+        {/* <Timer /> */}
       </div>
     );
   }
