@@ -3,8 +3,8 @@ import { Component } from "react";
 interface TimerState {
   minutes: number,
   seconds: number,
-  hours: number
-  // isRunning: boolean
+  hours: number,
+  isRunning: boolean
 }
 
 class Timer extends Component<{}, TimerState> {
@@ -14,8 +14,8 @@ class Timer extends Component<{}, TimerState> {
     this.state = {
       seconds: 0,
       minutes: 0,
-      hours: 0
-      // isRunning: false,
+      hours: 0,
+      isRunning: false,
     }
   }
   increment = () => {
@@ -25,12 +25,17 @@ class Timer extends Component<{}, TimerState> {
   }
   startTimer = () => {
     this.timerId = setInterval(() => {
-      // this.isRunning = true
       this.increment()
     }, 1000);
+    this.setState(() => ({
+      isRunning: true
+    }))
   }
   stopTimer = () => {
     clearInterval(this.timerId)
+    this.setState(() => ({
+      isRunning: false
+    }))
   }
   resetTimer = () => {
     this.setState(() => ({
@@ -51,9 +56,9 @@ class Timer extends Component<{}, TimerState> {
     return (
       <div>
         <h2>{this.state.hours}:{this.state.minutes}:{this.state.seconds}</h2>
-        <button onClick={this.startTimer}>Start</button>
-        <button onClick={this.stopTimer}>Stop</button>
-        <button onClick={this.resetTimer}>Reset</button>
+        <button disabled={this.state.isRunning} onClick={this.startTimer}>Start</button>
+        <button disabled={!this.state.isRunning} onClick={this.stopTimer}>Stop</button>
+        <button disabled={this.state.isRunning && (this.state.seconds > 0)} onClick={this.resetTimer}>Reset</button>
       </div >
     )
   }
