@@ -4,8 +4,9 @@ import "./App.scss";
 import Block from "./components/Block/Block";
 import Parent from "./components/Parent/Parent";
 import { Counter } from "./06.04.2024/Counter";
+import Timer from "./06.04.2024/Timer/Timer";
 
-const getItem = (text: string) => {};
+const getItem = (text: string) => { };
 
 getItem("text");
 
@@ -48,10 +49,11 @@ class App extends Component<{}, AppState> {
         {/* II sposób, przekazanie propsów wszystkich na raz przez spread operator */}
         {/* <Block {...blockProps} /> */}
         {/* ZADANIA Z DNIA 06.04.24 */}
-        <button onClick={this.toggleCounter}>
+        {/* <button onClick={this.toggleCounter}>
           {this.state.isCounterVisible ? "Ukryj" : "Pokaż"} Counter komponent
         </button>
-        {this.state.isCounterVisible && <Counter />}
+        {this.state.isCounterVisible && <Counter />} */}
+        <Timer />
       </div>
     );
   }
